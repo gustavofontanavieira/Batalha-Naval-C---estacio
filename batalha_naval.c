@@ -61,6 +61,14 @@ int main() {
             table1[9][j] = 3;
     }
 
+    
+      printf("\nCoordenadas dos navios:\n");
+        for (int i = 0; i < 10; i++) {
+            for(int j = 0; j < 10; j++){
+                printf("%d", table1[i][j]);
+            }
+        printf("\n");
+    }
   
 
         
@@ -74,22 +82,67 @@ int main() {
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 1 1 1 1 1
+    int cone[3][5] = {0};
+    
+    for (int i = 0; i < 3; i++) {
+        // Em cada linha, os 1s vão do centro até a esquerda/direita
+        for (int j = 2 - i; j <= 2 + i; j++) {
+            cone[i][j] = 1;
+        }
+    }
+    printf("habilidade em CONE\n");
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 5; j++){
+                printf("%d", cone[i][j]);
+            }
+        printf("\n");
+    }
     
     // Exemplo para habilidade em octaedro:
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 0 0 1 0 0
+     int cone2[3][5] = {0};
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    for (int i = 0; i < 3; i++) {
+        //compara as linhas, se é a primeira ou ultima e atribui apenas no meio o valor
+        if (i == 0 || i == 2) {
+            cone2[i][2] = 1;
+        } else if (i == 1) {
+            cone2[i][1] = 1;
+            cone2[i][2] = 1;
+            cone2[i][3] = 1;
+        }
+    }
 
-      printf("\nCoordenadas dos navios:\n");
-        for (int i = 0; i < 10; i++) {
-            for(int j = 0; j < 10; j++){
-                printf("%d", table1[i][j]);
-            }
+    printf("habilidade em Octaedro\n");
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", cone2[i][j]);
+        }
+        printf("\n");
+    }
+
+
+    int cruz[3][5] = {0};
+
+    for (int i = 0; i < 3; i++) {
+        //compara as linhas, se é a primeira ou ultima e atribui apenas no meio o valor
+        if (i == 1) {
+            cruz[i][0] = 1;
+            cruz[i][1] = 1;
+            cruz[i][2] = 1;
+            cruz[i][3] = 1;
+            cruz[i][4] = 1;
+        } else {
+            cruz[i][2] = 1;
+        }
+    }
+    printf("habilidade em Cruz\n");
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%d ", cruz[i][j]);
+        }
         printf("\n");
     }
     
